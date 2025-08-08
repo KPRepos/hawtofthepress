@@ -1,4 +1,4 @@
-/* tk-brutalist v0.4 — monospace, brutalist, SEO-native, Portal-ready, tag filter UI */
+/* hawtof-the-press v0.4 — monospace, brutalist, SEO-native, Portal-ready, tag filter UI */
 :root {
   --maxw: 720px;
 }
@@ -37,16 +37,37 @@ body {
   letter-spacing: 0.5px;
   white-space: nowrap;
 }
+.brand a {
+  color: #000;
+  text-decoration: none;
+}
+.brand a:hover {
+  text-decoration: underline;
+}
 .site-nav {
   display: flex;
   gap: 0.75rem;
   align-items: center;
   overflow: auto;
 }
+.site-nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+.site-nav li {
+  margin: 0;
+}
 .site-nav a {
   color: #000;
   text-decoration: none;
   padding: 0.15rem 0.25rem;
+}
+.site-nav a:visited {
+  color: #000;
 }
 .site-nav a:hover {
   text-decoration: underline;
@@ -178,59 +199,7 @@ a:visited {
   color: #000;
 }
 
-/* Modal */
-.modal-backdrop {
-  position: fixed;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.6);
-  display: none;
-  align-items: center;
-  justify-content: center;
-}
-.modal {
-  background: #fff;
-  color: #000;
-  border: 2px solid #000;
-  width: min(100% - 2rem, 420px);
-  padding: 1rem;
-}
-.modal h2 {
-  margin: 0 0 0.5rem 0;
-  font-size: 1.25rem;
-}
-.modal form {
-  display: grid;
-  gap: 0.5rem;
-}
-.modal label {
-  font-size: 0.9rem;
-  color: #333;
-}
-.modal input {
-  border: 2px solid #000;
-  padding: 0.4rem 0.5rem;
-  font: inherit;
-}
-.modal .row {
-  display: grid;
-  gap: 0.5rem;
-}
-.modal .actions {
-  display: flex;
-  gap: 0.5rem;
-  margin-top: 0.75rem;
-}
-.btn {
-  border: 2px solid #000;
-  background: #000;
-  color: #fff;
-  padding: 0.35rem 0.7rem;
-  cursor: pointer;
-}
-.btn.alt {
-  background: transparent;
-  color: #000;
-}
+/* (Removed custom modal styles; using Ghost Portal for signup/signin) */
 
 /* Ghost cards: required widths */
 .kg-width-wide {

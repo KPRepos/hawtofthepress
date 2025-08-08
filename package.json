@@ -1,5 +1,5 @@
 {
-  "name": "tk-brutalist",
+  "name": "hawtof-the-press",
   "version": "0.4.0",
   "description": "Monospace brutalist Ghost theme — vertical date • title, grey tags, SEO-friendly pages, Portal subscribe, tag filter UI.",
   "engines": {
@@ -23,5 +23,10 @@
     "seo",
     "members",
     "portal"
-  ]
+  ],
+  "scripts": {
+    "ghost:dev": "cd ../ghost && ghost run -D",
+    "ghost:start": "cd ../ghost && ghost start -D",
+    "ghost:stop": "cd ../ghost && ghost stop"
+  }
 }
