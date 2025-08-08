@@ -112,10 +112,6 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
-/* Hide "Home" in primary nav; title links to home */
-.site-nav .nav-home { display: none; }
-/* Hide the "Home" page from primary navigation; the logo/title links to home */
-.site-nav .nav-home { display: none; }
 .header-bottom {
   padding: 0.5rem 0 0 0;
   width: min(100% - 2rem, var(--maxw));
@@ -187,6 +183,26 @@ body {
   border-top: 2px solid #000;
   color: #333;
   font-size: 0.9rem;
+}
+/* Footer RSS link: align icon with label */
+.site-footer .rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.site-footer .rss-icon {
+  width: 14px;
+  height: 14px;
+}
+/* Footer RSS link: align icon with label */
+.site-footer .rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.site-footer .rss-icon {
+  width: 14px;
+  height: 14px;
 }
 a {
   color: #00e;

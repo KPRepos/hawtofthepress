@@ -115,7 +115,9 @@ body {
   text-underline-offset: 2px;
 }
 /* Hide the "Home" page from primary navigation; the logo/title links to home */
-.site-nav .nav-home { display: none; }
+.site-nav .nav-home {
+  display: none;
+}
 .header-bottom {
   padding: 0.5rem 0 0 0;
   width: min(100% - 2rem, var(--maxw));
@@ -187,6 +189,17 @@ body {
   border-top: 2px solid #000;
   color: #333;
   font-size: 0.9rem;
+}
+
+/* Footer RSS link: align icon with label */
+.site-footer .rss-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.site-footer .rss-icon {
+  width: 14px;
+  height: 14px;
 }
 
 a {
@@ -397,4 +410,16 @@ body.has-serif-body,
 }
 .site-footer a:visited {
   color: inherit;
+}
+
+/* Announcement bar: align with theme and avoid overlap with sticky header */
+#announcement-bar-root {
+  position: relative;
+  z-index: 20;
+  font: inherit;
+}
+#announcement-bar-root a {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
