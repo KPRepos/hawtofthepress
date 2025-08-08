@@ -21,5 +21,28 @@
   <main id="content" tabindex="-1">{{{body}}}</main>
   {{> "footer"}}
   {{ghost_foot}}
+  <script>
+    (function () {
+      const isMac = navigator.platform.toUpperCase().indexOf('MAC') >= 0;
+      const openSearch = () => {
+        const btn = document.querySelector('.search-btn[data-ghost-search]');
+        if (btn) btn.click();
+      };
+      window.addEventListener('keydown', function (e) {
+        if (e.key === '/' && !e.metaKey && !e.ctrlKey && !e.altKey && !e.shiftKey) {
+          const tag = (e.target && (e.target.tagName || '')).toLowerCase();
+          if (tag !== 'input' && tag !== 'textarea') {
+            e.preventDefault();
+            openSearch();
+          }
+        }
+        const cmdOrCtrl = isMac ? e.metaKey : e.ctrlKey;
+        if ((e.key === 'k' || e.key === 'K') && cmdOrCtrl) {
+          e.preventDefault();
+          openSearch();
+        }
+      });
+    })();
+  </script>
 </body>
 </html>

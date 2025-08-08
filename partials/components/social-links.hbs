@@ -1,0 +1,210 @@
+<ul class="social social-icons" aria-label="Social profiles">
+  {{#if website}}
+    <li>
+      <a
+        class="icon"
+        href="{{website}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Website"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        ><circle cx="12" cy="12" r="10" fill="currentColor" /></svg>
+        <span class="sr-only">Website</span>
+      </a>
+    </li>
+  {{/if}}
+
+  {{#if twitter}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="twitter"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Twitter"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="6"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >X</text></svg>
+        <span class="sr-only">Twitter</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if facebook}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="facebook"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Facebook"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="7"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >f</text></svg>
+        <span class="sr-only">Facebook</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if linkedin}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="linkedin"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="LinkedIn"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="6"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >in</text></svg>
+        <span class="sr-only">LinkedIn</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if bluesky}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="bluesky"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Bluesky"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="4"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >B</text></svg>
+        <span class="sr-only">Bluesky</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if threads}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="threads"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Threads"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="3"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >@</text></svg>
+        <span class="sr-only">Threads</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if mastodon}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="mastodon"}}"
+        target="_blank"
+        rel="me"
+        aria-label="Mastodon"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="3"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >M</text></svg>
+        <span class="sr-only">Mastodon</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if tiktok}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="tiktok"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="TikTok"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><text
+            x="2"
+            y="17"
+            font-size="12"
+            font-family="monospace"
+            fill="currentColor"
+          >Tk</text></svg>
+        <span class="sr-only">TikTok</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if youtube}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="youtube"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="YouTube"
+      >
+        <svg
+          viewBox="0 0 24 24"
+          width="16"
+          height="16"
+          aria-hidden="true"
+        ><polygon points="9,7 17,12 9,17" fill="currentColor" /></svg>
+        <span class="sr-only">YouTube</span>
+      </a>
+    </li>
+  {{/if}}
+  {{#if instagram}}
+    <li>
+      <a
+        class="icon"
+        href="{{social_url type="instagram"}}"
+        target="_blank"
+        rel="noopener me"
+        aria-label="Instagram"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><rect
+            x="4"
+            y="4"
+            width="16"
+            height="16"
+            rx="4"
+            ry="4"
+            stroke="currentColor"
+            fill="none"
+          /><circle
+            cx="12"
+            cy="12"
+            r="3"
+            stroke="currentColor"
+            fill="none"
+          /><circle cx="17" cy="7" r="1.5" fill="currentColor" /></svg>
+        <span class="sr-only">Instagram</span>
+      </a>
+    </li>
+  {{/if}}
+</ul>

@@ -1,0 +1,18 @@
+{{!< default}}
+
+<section class="error-page" aria-labelledby="error-heading">
+  <h1 id="error-heading">
+    <span class="code">{{statusCode}}</span>
+    Something went wrong
+  </h1>
+  {{#if message}}
+    <p class="message">{{message}}</p>
+  {{else}}
+    <p class="message">An unexpected error occurred. Please try again.</p>
+  {{/if}}
+  <div class="actions">
+    <a class="sub-btn" href="{{@site.url}}">Go home</a>
+    <a class="sub-btn alt" href="javascript:history.back()">Go back</a>
+  </div>
+  <p class="hint subtle">Error {{statusCode}}{{#if code}} · {{code}}{{/if}}</p>
+</section>

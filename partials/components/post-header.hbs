@@ -1,5 +1,10 @@
 <header>
   <h1 class="post-title">{{title}}</h1>
+  {{#if featured}}<span
+      class="star"
+      aria-label="Featured"
+      title="Featured"
+    >★</span>{{/if}}
   <div class="post-meta">
     <time class="date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
     {{#if tags}}

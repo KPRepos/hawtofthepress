@@ -3,6 +3,18 @@
 <section class="list" aria-labelledby="feed-heading">
   <h2 id="feed-heading" class="sr-only">Latest posts</h2>
   {{#if @site.description}}<p class="subtle">{{@site.description}}</p>{{/if}}
+  {{#get "posts" filter="featured:true" limit="6"}}
+    {{#if posts}}
+      <section class="featured" aria-labelledby="featured-heading">
+        <h2 id="featured-heading">Featured</h2>
+        <ul class="featured-grid">
+          {{#foreach posts}}
+            {{> "components/featured-card"}}
+          {{/foreach}}
+        </ul>
+      </section>
+    {{/if}}
+  {{/get}}
   {{> "components/feed-list"}}
   {{pagination}}
 </section>
