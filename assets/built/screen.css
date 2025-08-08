@@ -112,6 +112,10 @@ body {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
+/* Hide "Home" in primary nav; title links to home */
+.site-nav .nav-home { display: none; }
+/* Hide the "Home" page from primary navigation; the logo/title links to home */
+.site-nav .nav-home { display: none; }
 .header-bottom {
   padding: 0.5rem 0 0 0;
   width: min(100% - 2rem, var(--maxw));
