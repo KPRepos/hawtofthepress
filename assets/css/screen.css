@@ -82,6 +82,26 @@ body {
 }
 .header-bottom {
   padding: 0.5rem 0 0 0;
+  width: min(100% - 2rem, var(--maxw));
+  margin: 0 auto;
+}
+
+/* Tag nav */
+.tag-nav {
+  border-bottom: 2px solid #000;
+  padding: 0.5rem 0;
+}
+.tag-nav a {
+  margin-right: 0.6rem;
+  color: #666;
+  text-decoration: none;
+}
+.tag-nav a:visited {
+  color: #666;
+}
+.tag-nav a:hover {
+  text-decoration: underline;
+  color: #00e;
 }
 .site-footer {
   padding: 2rem 0;
@@ -210,24 +230,7 @@ a:visited {
   gap: 0.5rem;
 }
 
-/* Filter UI */
-.filter {
-  border-bottom: 2px solid #000;
-  padding: 0.5rem 0;
-}
-.filter a {
-  margin-right: 0.6rem;
-  color: #666;
-  text-decoration: none;
-}
-.filter a:hover {
-  text-decoration: underline;
-  color: #00e;
-}
-.filter a[aria-current="true"] {
-  font-weight: bold;
-  color: #000;
-}
+/* Tag filter UI removed; using a dedicated tags page instead */
 
 /* (Removed custom modal styles; using Ghost Portal for signup/signin) */
 

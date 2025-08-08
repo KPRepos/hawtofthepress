@@ -28,7 +28,13 @@
       {{/if}}
     </div>
   </div>
-  <div class="wrap header-bottom">
-    <nav id="tag-filter" class="filter" aria-label="Filter by tag"></nav>
-  </div>
 </header>
+<div class="wrap header-bottom">
+  <nav class="tag-nav" aria-label="Tags">
+    {{#get "tags" limit="all" order="name asc"}}
+      {{#foreach tags}}
+        <a href="{{url}}">#{{name}}</a>
+      {{/foreach}}
+    {{/get}}
+  </nav>
+</div>

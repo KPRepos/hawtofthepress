@@ -1,0 +1,16 @@
+{{!< default}}
+<header class="archive-header">
+  <h1>Tags</h1>
+</header>
+<section class="list">
+  <ul class="feed">
+    {{#get "tags" limit="all" include="count.posts" order="name asc"}}
+      {{#foreach tags}}
+        <li>
+          <a href="{{url}}">#{{name}}</a>
+          <span class="subtle">({{count.posts}})</span>
+        </li>
+      {{/foreach}}
+    {{/get}}
+  </ul>
+</section>
