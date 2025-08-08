@@ -1,0 +1,9 @@
+# Using Ghost defaults; tag and author pages work automatically.
+# routes:
+# collections:
+#   /:
+#     permalink: /{slug}/
+#     template: index
+# taxonomies:
+#   tag: /tag/{slug}/
+#   author: /author/{slug}/

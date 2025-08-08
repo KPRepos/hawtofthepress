@@ -1,0 +1,27 @@
+{
+  "name": "tk-brutalist",
+  "version": "0.4.0",
+  "description": "Monospace brutalist Ghost theme — vertical date • title, grey tags, SEO-friendly pages, Portal subscribe, tag filter UI.",
+  "engines": {
+    "ghost": ">=5.0.0"
+  },
+  "author": {
+    "name": "Zach Hawtof",
+    "email": "author@example.com"
+  },
+  "license": "MIT",
+  "config": {
+    "posts_per_page": 20
+  },
+  "keywords": [
+    "ghost",
+    "theme",
+    "ghost-theme",
+    "minimal",
+    "brutalist",
+    "monospace",
+    "seo",
+    "members",
+    "portal"
+  ]
+}

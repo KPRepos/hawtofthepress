@@ -1,0 +1,16 @@
+{{!< default}}
+<header class="archive-header">
+  <h1>#{{tag.name}}</h1>
+  {{#if tag.description}}<p class="subtle">{{tag.description}}</p>{{/if}}
+</header>
+<section class="list">
+  <ul class="feed" id="feed">
+    {{#foreach posts}}
+      <li class="{{post_class}}" data-tags="{{#foreach tags}}{{slug}}{{#unless @last}},{{/unless}}{{/foreach}}">
+        <time class="date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> — <a href="{{url}}">{{title}}</a>
+        {{#if tags}}<div class="tags"># {{tags separator=" # " autolink="true"}}</div>{{/if}}
+      </li>
+    {{/foreach}}
+  </ul>
+  {{pagination}}
+</section>

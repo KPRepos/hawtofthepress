@@ -1,0 +1,45 @@
+{{!< default}}
+{{#post}}
+  <article class="{{post_class}}">
+    <header>
+      <h1 class="post-title">{{title}}</h1>
+      <div class="post-meta">
+        <time
+          class="date"
+          datetime="{{date format="YYYY-MM-DD"}}"
+        >{{date}}</time>
+        {{#if tags}}<span class="tags">
+            · tags:
+            {{tags separator=", " autolink="true"}}</span>{{/if}}
+      </div>
+    </header>
+    {{#if feature_image}}<figure class="feature"><img
+          src="{{img_url feature_image}}"
+          alt="{{title}}"
+          loading="lazy"
+        /></figure>{{/if}}
+    <section class="post-content">
+      {{content}}
+    </section>
+    {{#if @site.members_enabled}}
+      {{#unless @member}}
+        <section class="subscribe-cta">
+          <a
+            class="sub-btn"
+            href="#/portal/signup"
+            data-open-portal
+          >Subscribe</a>
+          <button class="sub-btn alt" data-open-subscribe>Alt signup</button>
+          <span class="hint">Get new posts by email.</span>
+        </section>
+      {{/unless}}
+    {{/if}}
+    <nav class="post-nav">
+      <div class="prev">{{#prev_post}}←
+          <a href="{{url}}">{{title}}</a>{{/prev_post}}</div>
+      <div class="next">{{#next_post}}<a href="{{url}}">{{title}}</a>
+          →{{/next_post}}</div>
+    </nav>
+  </article>
+  {{#if comments}}<section class="comments">{{comments}}</section>{{/if}}
+{{/post}}
