@@ -1,26 +1,29 @@
 <footer class="site-footer">
-  <p>
-    ©
-    {{date format="YYYY"}}
-    {{@site.title}}
-    — Built with
-    <a
-      href="https://ghost.org"
-      target="_blank"
-      rel="noopener noreferrer"
-    >Ghost</a>
-    +
-    <a
-      href="https://openai.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >OpenAI GPT-5</a>
-    +
-    <a
-      href="https://cursor.com"
-      target="_blank"
-      rel="noopener noreferrer"
-    >Cursor</a>
-    · {{> "components/rss-link"}}
+  <p class="footer-line">
+    <span class="footer-copyright">
+      © {{date format="YYYY"}} {{@site.title}}
+    </span>
+    <span class="footer-built">
+      Built with
+      <a
+        href="https://ghost.org"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Ghost</a>
+      +
+      <a
+        href="https://openai.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >OpenAI GPT-5</a>
+      +
+      <a
+        href="https://cursor.com"
+        target="_blank"
+        rel="noopener noreferrer"
+      >Cursor</a>
+    </span>
+    <span class="footer-rss">{{> "components/rss-link"}}</span>
   </p>
+  
 </footer>
