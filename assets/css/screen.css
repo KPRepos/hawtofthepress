@@ -1,6 +1,7 @@
 /* hawtof-the-press v0.4 — monospace, brutalist, SEO-native, Portal-ready, tag filter UI */
 :root {
-  --maxw: 720px;
+  /* Slightly wider to accommodate reading time */
+  --maxw: 820px;
 }
 html,
 body {
@@ -21,6 +22,12 @@ body {
 }
 #content {
   padding-block: 2rem;
+}
+
+/* Reduce top spacing specifically on tag pages to avoid a large gap
+   between the secondary nav and the archive header */
+.tag-template #content {
+  padding-top: 0.5rem;
 }
 
 /* Visually hidden utility for screen reader-only content */
@@ -268,11 +275,24 @@ textarea:focus-visible {
 }
 .feed li {
   display: grid;
-  grid-template-columns: 12ch 1fr auto;
+  /* Add a middle column for reading time */
+  grid-template-columns: 12ch 1fr max-content auto;
   grid-auto-rows: auto;
   align-items: baseline;
   gap: 0.35rem 0.5rem;
-  padding: 0.3rem 0;
+  padding: 0.6rem 0;
+}
+.feed li + li {
+  border-top: 1px solid #e6e6e6;
+}
+@media (hover: hover) {
+  .feed li:hover {
+    background: #fafafa;
+  }
+}
+/* Gentle zebra striping to improve scan-ability */
+.feed li:nth-child(even) {
+  background: #fcfcfc;
 }
 .feed .date {
   white-space: nowrap;
@@ -280,6 +300,10 @@ textarea:focus-visible {
   color: #333;
 }
 .feed .item-link {
+  display: inline;
+}
+/* underline only the title so it doesn't extend under badges */
+.feed .item-link .item-title {
   text-decoration: underline;
   text-underline-offset: 2px;
 }
@@ -287,8 +311,28 @@ textarea:focus-visible {
 .feed .item-link .badge {
   text-decoration: none;
 }
-.feed .item-link {
-  display: inline;
+
+/* Reading time */
+.reading {
+  color: #666;
+  white-space: nowrap;
+}
+.feed .reading::before,
+.post-meta .reading::before {
+  content: "⏱\00a0"; /* clock + nbsp */
+  color: #666;
+}
+/* Separator dot between reading time and tags in feed */
+.feed .reading + .tags::before {
+  content: "·";
+  color: #aaa;
+  margin: 0 0.4rem 0 0.5rem;
+}
+
+/* Reading time in feed */
+.feed .reading {
+  color: #666;
+  white-space: nowrap;
 }
 
 /* Generic badge + outline featured variant */
@@ -400,6 +444,9 @@ textarea:focus-visible {
   margin: 0.25rem 0 1.25rem 0;
   display: block;
 }
+.post-meta .reading {
+  margin-left: 0.25rem;
+}
 .post-meta .tags {
   display: block;
   margin-top: 0.25rem;
@@ -444,6 +491,17 @@ textarea:focus-visible {
 .subtle {
   color: #666;
   font-size: 1.05rem;
+}
+
+/* Archive header (tag/author pages) */
+.archive-header {
+  margin: 0.5rem 0 0.75rem 0;
+}
+.archive-header h1 {
+  margin: 0;
+}
+.archive-header .subtle {
+  margin: 0.25rem 0 0 0;
 }
 
 /* Social links list */
@@ -646,4 +704,71 @@ body.has-serif-body,
   display: inline-flex;
   align-items: center;
   justify-content: center;
+}
+
+/* Mobile refinements */
+@media (max-width: 420px) {
+  .header-top {
+    gap: 0.5rem;
+  }
+  .brand {
+    flex: 1 1 auto;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  .actions {
+    gap: 0.35rem;
+    flex-shrink: 0;
+  }
+  .actions .sub-btn {
+    padding: 0.2rem 0.45rem;
+    height: 34px;
+  }
+  /* Hide standalone sign-in text link on very small screens;
+     users can still access sign-in via the Portal in Subscribe */
+  .actions .signin-link {
+    display: none;
+  }
+}
+
+/* Stack feed layout on narrow screens for clarity */
+@media (max-width: 560px) {
+  .feed li {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.15rem;
+  }
+  .feed .date {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  .feed .reading {
+    justify-self: start;
+    font-size: 0.9rem;
+    color: #333;
+  }
+  .feed .tags {
+    font-size: 0.9rem;
+  }
+}
+
+/* Stack feed layout on narrow screens for clarity */
+@media (max-width: 560px) {
+  .feed li {
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.15rem;
+  }
+  .feed .date {
+    font-size: 0.95rem;
+    color: #555;
+  }
+  .feed .reading {
+    justify-self: start;
+    font-size: 0.9rem;
+    color: #666;
+  }
+  .feed .tags {
+    font-size: 0.9rem;
+  }
 }

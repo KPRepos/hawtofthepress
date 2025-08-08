@@ -1,6 +1,18 @@
 {{!< default}}
 {{> "components/archive-header" heading_prefix="#" heading=tag.name description=tag.description}}
 <section class="list">
+  {{#get "posts" filter=(concat "featured:true+tag:" tag.slug) limit="3"}}
+    {{#if posts}}
+      <section class="featured featured-box" aria-labelledby="featured-heading">
+        <h2 id="featured-heading">Featured</h2>
+        <ul class="featured-stack">
+          {{#foreach posts}}
+            {{> "components/featured-card"}}
+          {{/foreach}}
+        </ul>
+      </section>
+    {{/if}}
+  {{/get}}
   {{> "components/feed-list"}}
   {{pagination}}
 </section>
