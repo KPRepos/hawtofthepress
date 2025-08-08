@@ -2,6 +2,8 @@
 
 Monospace brutalist Ghost theme with first‑class Ghost Portal and built‑in search support.
 
+![Theme preview](docs/screenshot.png)
+
 ## Features
 
 - **Header & navigation**: sticky header with brand and primary navigation; responsive mobile drawer

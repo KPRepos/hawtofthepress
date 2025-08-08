@@ -1,7 +1,15 @@
 {
-  "name": "hawtof-the-press",
+  "name": "hawtofthepress",
   "version": "0.1.0",
   "description": "Monospace brutalist Ghost theme — vertical date • title, grey tags, SEO-friendly pages, Portal subscribe, tag filter UI.",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhawtof/hawtofthepress.git"
+  },
+  "bugs": {
+    "url": "https://github.com/zhawtof/hawtofthepress/issues"
+  },
+  "homepage": "https://github.com/zhawtof/hawtofthepress#readme",
   "engines": {
     "ghost": ">=5.130.2",
     "node": ">=22"
