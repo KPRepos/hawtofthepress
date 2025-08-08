@@ -41,6 +41,9 @@ body {
   color: #000;
   text-decoration: none;
 }
+.brand a:visited {
+  color: #000;
+}
 .brand a:hover {
   text-decoration: underline;
 }
@@ -164,12 +167,39 @@ a:visited {
   background: transparent;
   cursor: pointer;
 }
+.sub-btn:visited {
+  color: #000;
+}
 .sub-btn:hover {
+  background: #000;
+  color: #fff;
+}
+.sub-btn:focus,
+.sub-btn:active {
   background: #000;
   color: #fff;
 }
 .sub-btn.alt {
   background: transparent;
+}
+.sub-btn.alt:hover,
+.sub-btn.alt:focus,
+.sub-btn.alt:active {
+  background: transparent;
+  color: #000;
+}
+
+/* Sign in as a plain link (no purple visited state) */
+.signin-link {
+  color: #000;
+  text-decoration: none;
+}
+.signin-link:hover,
+.signin-link:focus {
+  text-decoration: underline;
+}
+.signin-link:visited {
+  color: #000;
 }
 .subscribe-cta {
   margin-top: 2rem;
