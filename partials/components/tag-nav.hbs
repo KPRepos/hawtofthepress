@@ -2,7 +2,7 @@
   <a href="{{@site.url}}" {{#is "home"}}aria-current="page"{{/is}}>All</a>
   {{#get "tags" limit="50" order="name asc"}}
     {{#foreach tags}}
-      <a href="{{url}}">#{{name}}</a>
+      <a href="{{url}}" {{#is "tag"}}{{#match slug ../../tag.slug}}aria-current="page"{{/match}}{{/is}}>{{name}}</a>
     {{/foreach}}
   {{/get}}
 </nav>

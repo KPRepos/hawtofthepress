@@ -1,5 +1,6 @@
 <footer class="site-footer">
-  <p>©
+  <p>
+    ©
     {{date format="YYYY"}}
     {{@site.title}}
     — Built with
@@ -19,5 +20,28 @@
       href="https://cursor.com"
       target="_blank"
       rel="noopener noreferrer"
-    >Cursor</a>.</p>
+    >Cursor</a>
+    ·
+    <a class="rss-link" href="{{@site.url}}/rss/">
+      <svg
+        class="rss-icon"
+        xmlns="http://www.w3.org/2000/svg"
+        viewBox="0 0 24 24"
+        width="16"
+        height="16"
+        aria-hidden="true"
+      >
+        <path
+          d="M4 4a16 16 0 0116 16h-3A13 13 0 004 7V4z"
+          fill="currentColor"
+        />
+        <path
+          d="M4 10a10 10 0 0110 10h-3A7 7 0 004 13v-3z"
+          fill="currentColor"
+        />
+        <circle cx="6" cy="18" r="2" fill="currentColor" />
+      </svg>
+      <span>RSS</span>
+    </a>
+  </p>
 </footer>

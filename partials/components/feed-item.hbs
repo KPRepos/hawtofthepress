@@ -1,7 +1,6 @@
 <li class="{{post_class}}" data-tags="{{#if tags}}{{#foreach tags}}{{slug}}{{#unless @last}},{{/unless}}{{/foreach}}{{/if}}">
   <time class="date" datetime="{{date format='YYYY-MM-DD'}}">{{date}}</time>
-  —
-  <a href="{{url}}">{{title}}</a>
+  <a class="item-link" href="{{url}}">{{title}}</a>
   {{#if tags}}
     <div class="tags"># {{tags separator=" # " autolink="true"}}</div>
   {{/if}}
