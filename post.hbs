@@ -17,6 +17,7 @@
           src="{{img_url feature_image}}"
           alt="{{title}}"
           loading="lazy"
+          decoding="async"
         /></figure>{{/if}}
     <section class="post-content">
       {{content}}
@@ -35,10 +36,14 @@
       {{/unless}}
     {{/if}}
     <nav class="post-nav">
-      <div class="prev">{{#prev_post}}←
-          <a href="{{url}}">{{title}}</a>{{/prev_post}}</div>
-      <div class="next">{{#next_post}}<a href="{{url}}">{{title}}</a>
-          →{{/next_post}}</div>
+      <div class="prev">{{#prev_post}}
+          <a href="{{url}}" rel="prev" aria-label="Previous post: {{title}}">←
+            {{title}}</a>{{/prev_post}}</div>
+      <div class="next">{{#next_post}}<a
+            href="{{url}}"
+            rel="next"
+            aria-label="Next post: {{title}}"
+          >{{title}} →</a>{{/next_post}}</div>
     </nav>
   </article>
   {{#if comments}}<section class="comments">{{comments}}</section>{{/if}}

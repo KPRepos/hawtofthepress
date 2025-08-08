@@ -23,7 +23,44 @@ A minimal, monospace, brutalist Ghost theme with first‑class Ghost Portal supp
 
 ## Development
 
-This repo is a theme only. To run Ghost locally from the adjacent directory (parent folder):
+This repo is a theme only. It includes a lightweight Gulp + PostCSS pipeline inspired by Ghost's Source theme to build `assets/built/screen.css`, live‑reload templates, validate with gscan, and zip the theme for upload.
+
+### Prereqs
+
+- Node LTS and pnpm installed
+- Ghost local running at `http://localhost:2368`
+
+### Install deps
+
+```bash
+pnpm install
+```
+
+### Start dev watcher (CSS + live reload)
+
+```bash
+pnpm dev
+```
+
+### Build once (production)
+
+```bash
+pnpm build
+```
+
+### Lint theme with gscan
+
+```bash
+pnpm lint
+```
+
+### Create distributable zip
+
+```bash
+pnpm zip
+```
+
+To run Ghost locally from the adjacent directory (parent folder):
 
 - **Start in foreground (development)**: `npm run ghost:dev`
 - **Start in background (development)**: `npm run ghost:start`

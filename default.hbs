@@ -8,8 +8,9 @@
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
+  <a class="skip-link" href="#content">Skip to content</a>
   {{> "header"}}
-  <main id="content">{{{body}}}</main>
+  <main id="content" tabindex="-1">{{{body}}}</main>
   {{> "footer"}}
   {{ghost_foot}}
 </body>

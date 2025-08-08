@@ -1,10 +1,10 @@
 <header class="site-header">
   <div class="wrap header-top">
-    <div class="brand">{{#if @site.logo}}<a href="{{@site.url}}"><img
+    <div class="brand">{{#if @site.logo}}<a href="{{@site.url}}" rel="home"><img
             src="{{@site.logo}}"
             alt="{{@site.title}}"
             height="36"
-          /></a>{{else}}<a href="{{@site.url}}">{{@site.title}}</a>{{/if}}</div>
+          /></a>{{else}}<a href="{{@site.url}}" rel="home">{{@site.title}}</a>{{/if}}</div>
     <nav class="site-nav" aria-label="Primary">
       {{navigation}}
     </nav>
@@ -31,7 +31,8 @@
 </header>
 <div class="wrap header-bottom">
   <nav class="tag-nav" aria-label="Tags">
-    {{#get "tags" limit="all" order="name asc"}}
+    <a href="{{@site.url}}" {{#is "home"}}aria-current="page"{{/is}}>All</a>
+    {{#get "tags" limit="50" order="name asc"}}
       {{#foreach tags}}
         <a href="{{url}}">#{{name}}</a>
       {{/foreach}}

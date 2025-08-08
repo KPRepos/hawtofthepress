@@ -4,7 +4,7 @@
 </header>
 <section class="list">
   <ul class="feed">
-    {{#get "tags" limit="all" include="count.posts" order="name asc"}}
+    {{#get "tags" limit="100" include="count.posts" order="name asc"}}
       {{#foreach tags}}
         <li>
           <a href="{{url}}">#{{name}}</a>

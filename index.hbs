@@ -1,5 +1,7 @@
 {{!< default}}
-<section class="list">
+<h1 class="sr-only">{{@site.title}}</h1>
+<section class="list" aria-labelledby="feed-heading">
+  <h2 id="feed-heading" class="sr-only">Latest posts</h2>
   {{#if @site.description}}<p class="subtle">{{@site.description}}</p>{{/if}}
   <ul class="feed" id="feed">
     {{#foreach posts}}
