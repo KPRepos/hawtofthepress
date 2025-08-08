@@ -2,12 +2,11 @@
 <h1 class="sr-only">{{@site.title}}</h1>
 <section class="list" aria-labelledby="feed-heading">
   <h2 id="feed-heading" class="sr-only">Latest posts</h2>
-  {{#if @site.description}}<p class="subtle">{{@site.description}}</p>{{/if}}
-  {{#get "posts" filter="featured:true" limit="6"}}
+  {{#get "posts" filter="featured:true" limit="3"}}
     {{#if posts}}
-      <section class="featured" aria-labelledby="featured-heading">
+      <section class="featured featured-box" aria-labelledby="featured-heading">
         <h2 id="featured-heading">Featured</h2>
-        <ul class="featured-grid">
+        <ul class="featured-stack">
           {{#foreach posts}}
             {{> "components/featured-card"}}
           {{/foreach}}
