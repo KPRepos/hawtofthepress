@@ -16,8 +16,9 @@ const autoprefixer = require("autoprefixer");
 const postcssImport = require("postcss-import");
 const postcssNested = require("postcss-nested");
 const browserSync = require("browser-sync").create();
-const zip = require("gulp-zip");
-const del = require("del");
+const zipModule = require("gulp-zip");
+const zip = typeof zipModule === "function" ? zipModule : zipModule.default;
+const { deleteAsync } = require("del");
 const fs = require("fs");
 const path = require("path");
 
@@ -72,7 +73,7 @@ function watcher() {
 }
 
 function cleanDist() {
-  return del([paths.dist]);
+  return deleteAsync([paths.dist]);
 }
 
 function zipTheme() {
