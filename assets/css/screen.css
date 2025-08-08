@@ -137,6 +137,96 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
+
+/* Mobile menu toggle button (hidden on desktop) */
+.menu-btn {
+  display: none;
+  border: 0;
+  background: transparent;
+  box-shadow: none;
+}
+.menu-btn:hover,
+.menu-btn:focus {
+  border-color: transparent;
+  background: transparent;
+}
+.menu-btn:focus-visible {
+  outline: none;
+}
+
+/* Hidden checkbox used to toggle the mobile drawer */
+.menu-toggle {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Mobile drawer */
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  width: min(84vw, 360px);
+  background: #fff;
+  border-left: 1px solid #e6e6e6;
+  transform: translateX(100%);
+  transition: transform 180ms ease;
+  z-index: 20;
+  padding: 0.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+.mobile-menu__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-weight: 700;
+}
+.mobile-primary ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.mobile-primary a {
+  color: #000;
+  text-decoration: none;
+  padding: 0.15rem 0.25rem;
+}
+.mobile-primary a:hover {
+  text-decoration: underline;
+}
+.mobile-auth {
+  margin-top: 0.25rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.close-btn {
+  display: inline-flex;
+  width: 34px;
+  height: 34px;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #e6e6e6;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* When toggled, reveal the drawer */
+.menu-toggle:checked ~ .mobile-menu {
+  transform: translateX(0);
+}
 .icon-btn {
   appearance: none;
   border: 1px solid #e6e6e6;
@@ -151,6 +241,10 @@ body {
   line-height: 1;
   cursor: pointer;
   border-radius: 6px;
+}
+/* Ensure the hamburger is hidden by default even though it shares .icon-btn */
+.icon-btn.menu-btn {
+  display: none;
 }
 .icon-btn svg {
   width: 16px;
@@ -382,9 +476,17 @@ textarea:focus-visible {
 
 /* Featured stack box */
 .featured-box {
-  border: 1px solid #000;
+  /* Draw border via overlay to avoid being covered by text decorations */
+  position: relative;
   padding: 0.25rem 0.4rem; /* even denser */
   margin-bottom: 1rem;
+}
+.featured-box::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 1px #000; /* visual border, above children */
+  pointer-events: none;
 }
 .featured > h2 {
   margin: 0 0 0.25rem 0;
@@ -720,9 +822,16 @@ body.has-serif-body,
     gap: 0.35rem;
     flex-shrink: 0;
   }
+  /* Hide Subscribe button on mobile; available in drawer */
   .actions .sub-btn {
-    padding: 0.2rem 0.45rem;
-    height: 34px;
+    display: none;
+  }
+  /* Hide inline primary nav and show menu button */
+  .site-nav {
+    display: none;
+  }
+  .menu-btn {
+    display: inline-flex;
   }
   /* Hide standalone sign-in text link on very small screens;
      users can still access sign-in via the Portal in Subscribe */
