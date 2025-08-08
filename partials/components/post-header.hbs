@@ -11,19 +11,19 @@
     {{#if tags}}
       <span class="tags"># {{tags separator=" # " autolink="true"}}</span>
     {{/if}}
+    {{#primary_author}}
+      <div class="post-author">
+        {{#if profile_image}}
+          <img
+            class="post-author__avatar"
+            src="{{img_url profile_image size="s"}}"
+            alt="{{name}}"
+            width="28"
+            height="28"
+          />
+        {{/if}}
+        <a class="post-author__name" href="{{url}}">{{name}}</a>
+      </div>
+    {{/primary_author}}
   </div>
-  {{#primary_author}}
-    <div class="post-author">
-      {{#if profile_image}}
-        <img
-          class="post-author__avatar"
-          src="{{img_url profile_image size="s"}}"
-          alt="{{name}}"
-          width="28"
-          height="28"
-        />
-      {{/if}}
-      <a class="post-author__name" href="{{url}}">{{name}}</a>
-    </div>
-  {{/primary_author}}
 </header>

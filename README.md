@@ -1,34 +1,44 @@
-# hawtof-the-press v0.4
+# hawtof-the-press
 
-A minimal, monospace, brutalist Ghost theme with first‑class Ghost Portal support.
+Monospace brutalist Ghost theme with first‑class Ghost Portal and built‑in search support.
 
 ## Features
 
-- **Layout**: fixed header with brand, navigation, and tags menu bar; simple list feed
-- **Typography**: system monospace; optional serif toggles in CSS
-- **Tags**: grey tag list; vertical DATE — Title style; dedicated `/tags/` page
-- **SEO-native pages**: `index.hbs`, `post.hbs`, `page.hbs`, `tag.hbs`, `author.hbs`
-- **Members**: Ghost Portal subscribe/sign-in in header and post CTA
+- **Header & navigation**: sticky header with brand and primary navigation; responsive mobile drawer
+- **Secondary nav (tags/categories)**: optional bar under header using Ghost’s Secondary Navigation
+- **Search**: integrates Ghost’s built‑in `{{search}}` helper in the header
+- **Feed**: vertical DATE — Title layout with reading time, tags, featured badge, zebra striping
+- **Featured posts**: compact featured section on the homepage
+- **Accessibility**: skip‑to‑content link, focus styles, semantic landmarks
+- **Members**: Portal subscribe/sign‑in in header; post‑page subscribe CTA
+- **Typography**: system monospace by default; optional serif toggles via CSS utility classes
+- **SEO‑native pages**: `index.hbs`, `post.hbs`, `page.hbs`, `tag.hbs`, `author.hbs`
+
+## Navigation setup
+
+- **Primary navigation (pages menu)**: Managed in Ghost Admin → Settings → Navigation. Links appear in the header. The "Home" item is automatically hidden (`.nav-home`) because the logo/title links to home.
+- **Secondary navigation (tags/categories)**: Managed in Ghost Admin → Settings → Navigation (Secondary). Appears as a thin bar under the header. You can link tags (e.g. `/tag/news/`, `/tag/guides/`) or any URLs you want to surface.
 
 ## File structure
 
-- `default.hbs`: base template; includes `partials/header.hbs`, `partials/footer.hbs`
-- `index.hbs`: home feed with date/title + tags
-- `post.hbs`: post template with tags, prev/next, optional Portal CTA
+- `default.hbs`: base template; includes `partials/header.hbs`, `partials/footer.hbs`; injects RSS link and icons
+- `partials/header.hbs`: brand, `{{navigation}}` (primary), `{{search}}`, Portal links, mobile drawer, and `partials/components/tag-nav.hbs` (secondary nav)
+- `partials/footer.hbs`: copyright, "Built with" line, and RSS link (`partials/components/rss-link.hbs`)
+- `index.hbs`: homepage with Featured section and feed list + pagination
+- `post.hbs`: post template with feature image, content, subscribe CTA, and prev/next nav
 - `page.hbs`: page template with optional title/feature image
-- `tag.hbs`, `author.hbs`: archive templates
-- `assets/css/screen.css`: theme styles
-- `/tags/`: dedicated tags index route via `routes.yaml`
-- `routes.yaml`: defaults (using Ghost’s built-in routes)
+- `tag.hbs`, `author.hbs`: archive templates with compact headers
+- `assets/css/screen.css`: authored theme styles (source)
+- `assets/built/screen.css`: compiled/minified output from the build (not linked by default)
 
 ## Development
 
-This repo is a theme only. It includes a lightweight Gulp + PostCSS pipeline inspired by Ghost's Source theme to build `assets/built/screen.css`, live‑reload templates, validate with gscan, and zip the theme for upload.
+Gulp + PostCSS pipeline builds CSS, live‑reloads with BrowserSync, validates with gscan, and creates a zip for upload.
 
 ### Prereqs
 
-- Node LTS and pnpm installed
-- Ghost local running at `http://localhost:2368`
+- Node >= 18 and pnpm
+- Local Ghost at `http://localhost:2368`
 
 ### Install deps
 
@@ -42,7 +52,8 @@ pnpm install
 pnpm dev
 ```
 
-This runs Ghost in development and the theme’s Gulp watcher concurrently.
+- Proxies Ghost at `http://localhost:2368` for live reload
+- Watches `assets/css/**/*.css` and all `.hbs` templates
 
 ### Build once (production)
 
@@ -50,35 +61,45 @@ This runs Ghost in development and the theme’s Gulp watcher concurrently.
 pnpm build
 ```
 
+- Processes `assets/css/screen.css` with PostCSS (`postcss-import`, `postcss-nested`, `autoprefixer`)
+- Minifies with `cssnano` in production
+- Writes output to `assets/built/screen.css`
+
 ### Lint theme with gscan
 
 ```bash
 pnpm lint
 ```
 
-### Create distributable zip
+### Create distributable zip (in `dist/`)
 
 ```bash
 pnpm zip
 ```
 
-To run Ghost locally from the adjacent directory (parent folder):
+### Running Ghost locally from the parent directory
 
-- **Start in foreground (development)**: `npm run ghost:dev`
-- **Start in background (development)**: `npm run ghost:start`
-- **Stop**: `npm run ghost:stop`
-
-Assumes a local Ghost instance exists in the parent directory. If not, from the parent run:
+From the repository’s parent directory, install Ghost once if needed:
 
 ```bash
 ghost install local
 ```
 
-Then in Ghost Admin → Settings → Design, upload or link this theme folder in development.
+Then use these package scripts from this theme folder:
+
+- `pnpm run ghost:dev` — run Ghost in foreground
+- `pnpm run ghost:start` — start Ghost in background
+- `pnpm run ghost:stop` — stop Ghost
+
+In Ghost Admin → Settings → Design, upload the zip from `dist/` or symlink this theme for development.
+
+## Notes on CSS
+
+- The theme links `assets/css/screen.css` directly for readability during development. The build also emits a minified copy to `assets/built/screen.css`. If you prefer, you can change the stylesheet link in `default.hbs` to point to the built file for production.
 
 ## Compatibility
 
-- Requires **Ghost >= 5.0.0**
+- Requires **Ghost >= 5.130.2**
 - Tested with Ghost Portal members enabled/disabled
 
 ## License

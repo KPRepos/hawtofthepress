@@ -421,13 +421,13 @@ textarea:focus-visible {
   color: #666;
   white-space: nowrap;
 }
+/* Remove clock icon before reading time */
 .feed .reading::before,
 .post-meta .reading::before {
-  content: "⏱\00a0"; /* clock + nbsp */
-  color: #666;
+  content: none;
 }
-/* Separator dot between reading time and tags in feed */
-.feed .reading + .tags::before {
+/* Separator dot between tags and reading time in feed (after swap) */
+.feed .tags + .reading::before {
   content: "·";
   color: #aaa;
   margin: 0 0.4rem 0 0.5rem;
@@ -580,14 +580,26 @@ textarea:focus-visible {
 .post-meta {
   color: #333;
   margin: 0.25rem 0 1.25rem 0;
-  display: block;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.5rem;
 }
 .post-meta .reading {
-  margin-left: 0.25rem;
+  margin-left: 0; /* handled via separators */
 }
 .post-meta .tags {
-  display: block;
-  margin-top: 0.25rem;
+  margin-left: 0; /* handled via separators */
+}
+/* Dot separators between meta items */
+.post-meta .date + .reading::before,
+.post-meta .reading + .tags::before,
+.post-meta .tags + .post-author::before,
+.post-meta .reading + .post-author::before,
+.post-meta .date + .post-author::before {
+  content: "·";
+  color: #aaa;
+  margin: 0 0.4rem;
 }
 /* Compact author block under the title */
 .post-author {
@@ -595,7 +607,7 @@ textarea:focus-visible {
   align-items: center;
   gap: 0.3rem;
   color: #333;
-  margin: 0.1rem 0 0.5rem 0;
+  margin: 0; /* keep inline with other meta */
 }
 .post-author__avatar {
   width: 24px;

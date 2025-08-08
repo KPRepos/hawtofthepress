@@ -1,10 +1,10 @@
 <li class="{{post_class}}" data-tags="{{#if tags}}{{#foreach tags}}{{slug}}{{#unless @last}},{{/unless}}{{/foreach}}{{/if}}">
   <time class="date" datetime="{{date format='YYYY-MM-DD'}}">{{date}}</time>
   <a class="item-link" href="{{url}}"><span class="item-title">{{title}}</span>{{#if featured}} <span class="badge badge-featured" aria-label="Featured" title="Featured">Featured</span>{{/if}}</a>
-  <span class="reading">{{reading_time}}</span>
   {{#if tags}}
     <span class="tags"># {{tags separator=" # " autolink="true"}}</span>
   {{/if}}
+  <span class="reading">{{reading_time}}</span>
 </li>
 
 
