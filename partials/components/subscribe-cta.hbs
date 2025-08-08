@@ -1,0 +1,9 @@
+{{#if @site.members_enabled}}
+  {{#unless @member}}
+    <section class="subscribe-cta">
+      <a class="sub-btn" href="#/portal/signup" data-open-portal>Subscribe</a>
+      <a class="signin-link" href="#/portal/signin" data-open-portal>Sign in</a>
+      <span class="hint">Get new posts by email.</span>
+    </section>
+  {{/unless}}
+{{/if}}

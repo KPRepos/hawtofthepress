@@ -1,0 +1,9 @@
+<header>
+  <h1 class="post-title">{{title}}</h1>
+  <div class="post-meta">
+    <time class="date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time>
+    {{#if tags}}
+      <span class="tags">· tags: {{tags separator=", " autolink="true"}}</span>
+    {{/if}}
+  </div>
+</header>

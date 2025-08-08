@@ -1,38 +1,9 @@
 {{!< default}}
-<header class="archive-header">
-  <h1>#{{tag.name}}</h1>
-  {{#if tag.description}}<p class="subtle">{{tag.description}}</p>{{/if}}
-</header>
+{{> "components/archive-header" heading_prefix="#" heading=tag.name description=tag.description}}
 <section class="list">
-  <ul class="feed" id="feed">
-    {{#foreach posts}}
-      <li class="{{post_class}}" data-tags="{{#foreach tags}}{{slug}}{{#unless @last}},{{/unless}}{{/foreach}}">
-        <time class="date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> — <a href="{{url}}">{{title}}</a>
-        {{#if tags}}<div class="tags"># {{tags separator=" # " autolink="true"}}</div>{{/if}}
-      </li>
-    {{/foreach}}
-  </ul>
+  {{> "components/feed-list"}}
   {{pagination}}
 </section>
 {{#tag}}
-<script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      {
-        "@type": "ListItem",
-        "position": 1,
-        "name": "{{@site.title}}",
-        "item": "{{@site.url}}"
-      },
-      {
-        "@type": "ListItem",
-        "position": 2,
-        "name": "#{{name}}",
-        "item": "{{url absolute='true'}}"
-      }
-    ]
-  }
-</script>
+  {{> "components/breadcrumbs" crumb_two_name=(concat "#" name) crumb_two_url=(url absolute="true")}}
 {{/tag}}

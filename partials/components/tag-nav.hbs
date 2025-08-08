@@ -1,0 +1,10 @@
+<nav class="tag-nav" aria-label="Tags">
+  <a href="{{@site.url}}" {{#is "home"}}aria-current="page"{{/is}}>All</a>
+  {{#get "tags" limit="50" order="name asc"}}
+    {{#foreach tags}}
+      <a href="{{url}}">#{{name}}</a>
+    {{/foreach}}
+  {{/get}}
+</nav>
+
+

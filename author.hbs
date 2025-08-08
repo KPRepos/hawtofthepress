@@ -1,32 +1,11 @@
 {{!< default}}
 {{#author}}
-  <header class="archive-header">
-    <h1>{{name}}</h1>
-    {{#if bio}}<p class="subtle">{{bio}}</p>{{/if}}
-  </header>
+  {{> "components/archive-header" heading=name description=bio}}
 {{/author}}
 <section class="list">
-  <ul class="feed" id="feed">
-    {{#foreach posts}}
-      <li class="{{post_class}}">
-        <time
-          class="date"
-          datetime="{{date format="YYYY-MM-DD"}}"
-        >{{date}}</time>
-        —
-        <a href="{{url}}">{{title}}</a>
-        {{#if tags}}<div class="tags">#
-            {{tags separator=" # " autolink="true"}}</div>{{/if}}
-      </li>
-    {{/foreach}}
-  </ul>
+  {{> "components/feed-list"}}
   {{pagination}}
 </section>
 {{#author}}
-  <script type="application/ld+json">
-    { "@context": "https://schema.org", "@type": "BreadcrumbList",
-    "itemListElement": [ { "@type": "ListItem", "position": 1, "name": "{{@site.title}}",
-    "item": "{{@site.url}}" }, { "@type": "ListItem", "position": 2, "name": "{{name}}",
-    "item": "{{url absolute="true"}}" } ] }
-  </script>
+  {{> "components/breadcrumbs" crumb_two_name=name crumb_two_url=(url absolute="true")}}
 {{/author}}

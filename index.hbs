@@ -3,13 +3,6 @@
 <section class="list" aria-labelledby="feed-heading">
   <h2 id="feed-heading" class="sr-only">Latest posts</h2>
   {{#if @site.description}}<p class="subtle">{{@site.description}}</p>{{/if}}
-  <ul class="feed" id="feed">
-    {{#foreach posts}}
-      <li class="{{post_class}}" data-tags="{{#foreach tags}}{{slug}}{{#unless @last}},{{/unless}}{{/foreach}}">
-        <time class="date" datetime="{{date format="YYYY-MM-DD"}}">{{date}}</time> — <a href="{{url}}">{{title}}</a>
-        {{#if tags}}<div class="tags"># {{tags separator=" # " autolink="true"}}</div>{{/if}}
-      </li>
-    {{/foreach}}
-  </ul>
+  {{> "components/feed-list"}}
   {{pagination}}
 </section>

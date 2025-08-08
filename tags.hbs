@@ -1,7 +1,5 @@
 {{!< default}}
-<header class="archive-header">
-  <h1>Tags</h1>
-</header>
+{{> "components/archive-header" heading="Tags"}}
 <section class="list">
   <ul class="feed">
     {{#get "tags" limit="100" include="count.posts" order="name asc"}}

@@ -288,13 +288,21 @@ textarea:focus-visible {
 }
 
 /* Optional: support for custom fonts toggles */
+/* Ensure the serif body toggle works regardless of whether the class is on html or body */
+html.has-serif-body,
+body.has-serif-body,
 .has-serif-body {
   font-family: Georgia, "Times New Roman", serif;
 }
 .has-serif-title h1,
 .has-serif-title h2,
 .has-serif-title h3,
-.has-serif-title .post-title {
+.has-serif-title .post-title,
+/* Support Ghost's alternate class name for headings */
+.has-serif-headings h1,
+.has-serif-headings h2,
+.has-serif-headings h3,
+.has-serif-headings .post-title {
   font-family: Georgia, "Times New Roman", serif;
 }
 
