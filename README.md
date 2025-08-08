@@ -36,11 +36,13 @@ This repo is a theme only. It includes a lightweight Gulp + PostCSS pipeline ins
 pnpm install
 ```
 
-### Start dev watcher (CSS + live reload)
+### Start dev (Ghost + theme watcher)
 
 ```bash
 pnpm dev
 ```
+
+This runs Ghost in development and the theme’s Gulp watcher concurrently.
 
 ### Build once (production)
 

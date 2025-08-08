@@ -31,7 +31,8 @@
     "> 0.5%"
   ],
   "scripts": {
-    "dev": "gulp dev",
+    "dev": "concurrently -n theme,ghost -c magenta,cyan \"pnpm run dev:theme\" \"pnpm run ghost:dev\"",
+    "dev:theme": "gulp dev",
     "build": "NODE_ENV=production gulp build",
     "zip": "NODE_ENV=production gulp zip",
     "lint": "gscan .",
@@ -42,6 +43,7 @@
     "ghost:stop": "cd ../ghost && ghost stop"
   },
   "devDependencies": {
+    "concurrently": "^9.2.0",
     "autoprefixer": "^10.4.21",
     "browser-sync": "^3.0.4",
     "cssnano": "^7.1.0",

@@ -18,6 +18,8 @@
           alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
           loading="lazy"
           decoding="async"
+          width="1200"
+          height="630"
         />{{#if feature_image_caption}}<figcaption>{{feature_image_caption}}</figcaption>{{/if}}</figure>{{/if}}
     <section class="post-content">
       {{content}}
@@ -46,5 +48,25 @@
           >{{title}} →</a>{{/next_post}}</div>
     </nav>
   </article>
+  <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "{{@site.title}}",
+          "item": "{{@site.url}}"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "{{title}}",
+          "item": "{{url absolute='true'}}"
+        }
+      ]
+    }
+  </script>
   {{#if comments}}<section class="comments">{{comments}}</section>{{/if}}
 {{/post}}
