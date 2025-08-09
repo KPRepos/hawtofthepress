@@ -8,7 +8,7 @@
   --c-muted: #333333;
   --c-border: #e6e6e6;
   --c-link: #0645ad; /* Accessible blue on white */
-  --c-link-visited: #0b3d91; /* Darker navy for visited (non-purple) */
+  --c-link-visited: #b85c1c; /* Dark burnt orange for visited links */
   --c-link-hover: #0b5bd3; /* Slightly brighter for hover */
   --c-surface: #ffffff;
   --c-surface-hover: #f6f6f6;
@@ -1083,8 +1083,8 @@ body.has-serif-body,
   --c-subtle: #b0b0b0;
   --c-muted: #d0d0d0;
   --c-border: #2e2e2e;
-  --c-link: #7fb3ff; /* Accessible on dark */
-  --c-link-visited: #ffd166; /* Warm accent */
+  --c-link: #ffd166; /* Warm accent */
+  --c-link-visited: #7fb3ff; /* Accessible on dark */
   --c-link-hover: #a6c8ff;
   --c-surface: #181818;
   --c-surface-hover: #1f1f1f;
