@@ -315,7 +315,7 @@ body {
 .tag-nav a::before {
   content: "#";
   color: #999;
-  margin-right: 0.2rem;
+  margin-right: 0.1rem;
 }
 .tag-nav a:visited {
   color: #555;
