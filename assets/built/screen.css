@@ -57,10 +57,7 @@ body {
 .site-header {
   padding: 0.75rem 0;
   border-bottom: 1px solid #e6e6e6;
-  position: sticky;
-  top: 0;
   background: #fff;
-  z-index: 10;
 }
 .header-top {
   display: flex;
@@ -628,6 +625,16 @@ textarea:focus-visible {
 .post-content p {
   margin: 0 0 1rem 0;
 }
+/* Normalize media inside post content */
+.post-content figure {
+  margin: 1.25rem 0; /* remove UA side margins that misalign wide media */
+}
+.post-content img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  margin: 0 auto; /* center standard images */
+}
 .feature {
   /* Reserve common social share aspect ratio to reduce CLS */
   aspect-ratio: 1200 / 630;
@@ -644,8 +651,26 @@ textarea:focus-visible {
 .post-nav {
   display: flex;
   justify-content: space-between;
+  align-items: baseline;
+  gap: 1rem;
   margin-top: 2rem;
+  margin-bottom: 2.5rem; /* add more space before comments */
   font-size: 0.95rem;
+}
+.post-nav .prev,
+.post-nav .next {
+  flex: 1 1 50%;
+  max-width: calc(var(--maxw) / 2 - 1rem); /* keep text from crossing center */
+}
+.post-nav .next {
+  text-align: right;
+}
+.post-nav a {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .pagination {
   display: flex;
@@ -787,6 +812,10 @@ textarea:focus-visible {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+}
+/* Comments spacing */
+.comments {
+  margin-top: 2.5rem;
 }
 /* Tag filter UI removed; using a dedicated tags page instead */
 /* (Removed custom modal styles; using Ghost Portal for signup/signin) */
