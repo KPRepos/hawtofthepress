@@ -195,8 +195,17 @@ body {
   text-decoration: none;
   padding: 0.15rem 0.25rem;
 }
+.mobile-primary a:visited {
+  color: #000;
+}
 .mobile-primary a:hover {
   text-decoration: underline;
+}
+.mobile-primary .nav-current a,
+.mobile-primary a[aria-current="page"] {
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 2px;
 }
 .mobile-auth {
   margin-top: 0.25rem;
