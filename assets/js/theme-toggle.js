@@ -7,7 +7,7 @@
     if (theme === "dark") {
       root.classList.add("theme-dark");
       root.setAttribute("data-theme", "dark");
-      if (metaTheme) metaTheme.setAttribute("content", "#0b0b0b");
+      if (metaTheme) metaTheme.setAttribute("content", "#14171A");
       if (toggle) toggle.setAttribute("aria-pressed", "true");
     } else {
       root.classList.remove("theme-dark");
