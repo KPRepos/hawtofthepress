@@ -1,14 +1,17 @@
 <nav class="post-nav">
   <div class="prev">
     {{#prev_post}}
-      <a href="{{url}}" rel="prev" aria-label="Previous post: {{title}}">←
-        {{title}}</a>
+      <a href="{{url}}" rel="prev" aria-label="Previous post: {{title}}"><span
+          class="arrow"
+          aria-hidden="true"
+        >←</span><span class="label">{{title}}</span></a>
     {{/prev_post}}
   </div>
   <div class="next">
     {{#next_post}}
-      <a href="{{url}}" rel="next" aria-label="Next post: {{title}}">{{title}}
-        →</a>
+      <a href="{{url}}" rel="next" aria-label="Next post: {{title}}"><span
+          class="label"
+        >{{title}}</span><span class="arrow" aria-hidden="true">→</span></a>
     {{/next_post}}
   </div>
 </nav>

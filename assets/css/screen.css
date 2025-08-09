@@ -687,8 +687,20 @@ textarea:focus-visible {
   text-align: right;
 }
 .post-nav a {
-  display: inline-block;
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.35rem;
   max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Ensure arrows always visible; only the title label truncates */
+.post-nav a .arrow {
+  flex: 0 0 auto;
+}
+.post-nav a .label {
+  min-width: 0;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
