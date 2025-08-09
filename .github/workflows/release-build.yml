@@ -4,6 +4,11 @@ on:
   release:
     types: [published]
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Existing tag to attach assets to (required for manual runs)"
+        required: true
+        type: string
 
 permissions:
   contents: write
@@ -39,3 +44,5 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           files: dist/*.zip
+          tag_name: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tag_name }}
+          token: ${{ secrets.GITHUB_TOKEN }}

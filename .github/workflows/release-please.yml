@@ -1,4 +1,4 @@
-name: Release (manage via release-please)
+name: Automated Releases (release-please)
 
 on:
   push:
