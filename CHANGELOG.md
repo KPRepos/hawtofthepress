@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.1](https://github.com/zhawtof/hawtofthepress/compare/v1.1.0...v1.1.1) (2025-08-09)
+
+
+### Bug Fixes
+
+* **signin:** enhance specificity and color consistency for sign-in links across various components ([779d535](https://github.com/zhawtof/hawtofthepress/commit/779d535837b0f22c0049f8ff2c041c85306e3de6))
+* **theme:** update dark theme colors for improved contrast and consistency ([08c666b](https://github.com/zhawtof/hawtofthepress/commit/08c666bf77b349de01f9ecd407bb56ab42836242))
+
 ## [1.1.0](https://github.com/zhawtof/hawtofthepress/compare/v1.0.3...v1.1.0) (2025-08-09)
 
 
