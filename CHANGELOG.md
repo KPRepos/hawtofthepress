@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/zhawtof/hawtofthepress/compare/v1.1.1...v1.1.2) (2025-08-09)
+
+
+### Bug Fixes
+
+* **theme:** update link colors for better visibility and consistency across light and dark themes ([fa4b102](https://github.com/zhawtof/hawtofthepress/commit/fa4b102e758a2d79b25fadbbc010a34800a2b6e6))
+
 ## [1.1.1](https://github.com/zhawtof/hawtofthepress/compare/v1.1.0...v1.1.1) (2025-08-09)
 
 
