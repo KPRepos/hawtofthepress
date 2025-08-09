@@ -107,3 +107,19 @@ In Ghost Admin → Settings → Design, upload the zip from `dist/` or symlink t
 ## License
 
 MIT
+
+## Releases
+
+- Releases are managed by a GitHub Actions workflow using release-please.
+- On pushes to `main`, a release PR may be opened/updated with a changelog and version bump based on conventional commits (e.g., `feat:`, `fix:`).
+- When the release PR is merged, a Git tag and GitHub Release are created automatically.
+- A separate workflow builds the theme zip and uploads it to the GitHub Release as an asset.
+
+### Triggering a release manually
+
+- Go to Actions → "Release (manage via release-please)" → Run workflow.
+- Or merge a conventional commits PR to `main` and the workflow will handle it automatically.
+
+### Downloading the theme zip
+
+- After a release is published, the built zip (e.g. `hawtofthepress-<version>.zip`) is attached to that release.
