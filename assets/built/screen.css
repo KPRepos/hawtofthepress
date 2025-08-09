@@ -920,17 +920,27 @@ textarea:focus-visible {
   background: transparent;
   color: #000;
 }
-/* Sign in as a plain link (no purple visited state) */
-.signin-link {
-  color: var(--c-fg);
+/* Sign in as a plain link (match Subscribe color, override any Portal styles) */
+/* Use higher specificity and !important to defeat generic a[data-open-portal] rules */
+a.signin-link,
+a.signin-link:link,
+a.signin-link:visited,
+.actions a.signin-link,
+.mobile-auth a.signin-link,
+.subscribe-cta a.signin-link {
+  color: var(--c-fg) !important;
   text-decoration: none;
 }
-.signin-link:hover,
-.signin-link:focus {
+a.signin-link:hover,
+a.signin-link:focus,
+.actions a.signin-link:hover,
+.actions a.signin-link:focus,
+.mobile-auth a.signin-link:hover,
+.mobile-auth a.signin-link:focus,
+.subscribe-cta a.signin-link:hover,
+.subscribe-cta a.signin-link:focus {
+  color: var(--c-fg) !important;
   text-decoration: underline;
-}
-.signin-link:visited {
-  color: var(--c-fg);
 }
 .subscribe-cta {
   margin-top: 2rem;
@@ -1053,7 +1063,6 @@ body.has-serif-body,
   width: 34px;
   height: 34px;
   padding: 0;
-  border: 0;
 }
 .theme-toggle .sun {
   color: var(--c-icon-sun);
