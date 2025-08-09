@@ -1,16 +1,22 @@
 name: Deploy Theme to Ghost
 
 on:
-  push:
-    branches:
-      - main
+  release:
+    types: [published]
   workflow_dispatch:
+    inputs:
+      tag_name:
+        description: "Tag to deploy (e.g., v1.2.3)"
+        required: true
+        type: string
 
 jobs:
   deploy:
     runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'release' && github.event.release.tag_name || inputs.tag_name }}
 
       - name: Deploy Ghost Theme
         uses: TryGhost/action-deploy-theme@v1
