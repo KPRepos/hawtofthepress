@@ -40,25 +40,31 @@
     function getFocusable(container) {
       if (!container) return [];
       var focusableSelectors = [
-        'a[href]',
-        'area[href]',
-        'button:not([disabled])',
+        "a[href]",
+        "area[href]",
+        "button:not([disabled])",
         'input:not([disabled]):not([type="hidden"])',
-        'select:not([disabled])',
-        'textarea:not([disabled])',
-        'iframe',
-        'object',
-        'embed',
-        '[contenteditable]',
-        '[tabindex]:not([tabindex="-1"])'
-      ].join(',');
-      var nodes = Array.prototype.slice.call(container.querySelectorAll(focusableSelectors));
+        "select:not([disabled])",
+        "textarea:not([disabled])",
+        "iframe",
+        "object",
+        "embed",
+        "[contenteditable]",
+        '[tabindex]:not([tabindex="-1"])',
+      ].join(",");
+      var nodes = Array.prototype.slice.call(
+        container.querySelectorAll(focusableSelectors)
+      );
       return nodes.filter(function (el) {
         // Must be visible and not inside an aria-hidden parent
         if (!isVisible(el)) return false;
         var parent = el.parentElement;
         while (parent && parent !== container) {
-          if (parent.getAttribute && parent.getAttribute('aria-hidden') === 'true') return false;
+          if (
+            parent.getAttribute &&
+            parent.getAttribute("aria-hidden") === "true"
+          )
+            return false;
           parent = parent.parentElement;
         }
         return true;
@@ -81,7 +87,7 @@
       var focusables = getFocusable(menu);
       var target = null;
       // Prefer close button if present, else the first focusable control
-      var closeBtn = menu.querySelector('.close-btn');
+      var closeBtn = menu.querySelector(".close-btn");
       if (closeBtn && isVisible(closeBtn)) {
         target = closeBtn;
       } else if (focusables.length > 0) {
@@ -89,7 +95,9 @@
       }
       if (target) {
         // Focus after styles/visibility apply
-        requestAnimationFrame(function () { target.focus(); });
+        requestAnimationFrame(function () {
+          target.focus();
+        });
       }
     }
 
@@ -100,14 +108,14 @@
       var active = document.activeElement;
       var focusIsInsideMenu = menu.contains(active);
 
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         event.stopPropagation();
         event.preventDefault();
         closeMenu();
         return;
       }
 
-      if (event.key !== 'Tab') return;
+      if (event.key !== "Tab") return;
       if (!focusIsInsideMenu) return;
 
       var focusables = getFocusable(menu);
@@ -131,18 +139,20 @@
     function openMenu() {
       lastFocusedBeforeOpen = document.activeElement;
       updateAria();
-      document.addEventListener('keydown', handleKeydownTrap, true);
+      document.addEventListener("keydown", handleKeydownTrap, true);
       focusInitialElement();
     }
 
     function closeMenu() {
       toggle.checked = false;
       updateAria();
-      document.removeEventListener('keydown', handleKeydownTrap, true);
+      document.removeEventListener("keydown", handleKeydownTrap, true);
       // Restore focus
       var target = lastOpener || lastFocusedBeforeOpen;
-      if (target && typeof target.focus === 'function') {
-        requestAnimationFrame(function () { target.focus(); });
+      if (target && typeof target.focus === "function") {
+        requestAnimationFrame(function () {
+          target.focus();
+        });
       }
     }
 
@@ -151,7 +161,10 @@
       if (key === "Enter" || key === " ") {
         event.preventDefault();
         // Record opener when keyboard-activated
-        if (event.currentTarget && event.currentTarget.classList.contains('menu-btn')) {
+        if (
+          event.currentTarget &&
+          event.currentTarget.classList.contains("menu-btn")
+        ) {
           lastOpener = event.currentTarget;
         }
         var willOpen = !toggle.checked;
@@ -167,9 +180,11 @@
 
     // Track last opener on pointer
     openButtons.forEach(function (btn) {
-      btn.addEventListener('mousedown', function () { lastOpener = btn; });
-      btn.addEventListener('keydown', handleKeyActivate);
-      btn.addEventListener('click', function () {
+      btn.addEventListener("mousedown", function () {
+        lastOpener = btn;
+      });
+      btn.addEventListener("keydown", handleKeyActivate);
+      btn.addEventListener("click", function () {
         // checkbox state toggled by label click; wait for it then run handlers
         setTimeout(function () {
           updateAria();
@@ -183,8 +198,8 @@
     });
 
     closeButtons.forEach(function (btn) {
-      btn.addEventListener('keydown', handleKeyActivate);
-      btn.addEventListener('click', function () {
+      btn.addEventListener("keydown", handleKeyActivate);
+      btn.addEventListener("click", function () {
         setTimeout(function () {
           updateAria();
           if (toggle.checked) {
@@ -197,7 +212,7 @@
     });
 
     // React to programmatic or label-driven state changes
-    toggle.addEventListener('change', function () {
+    toggle.addEventListener("change", function () {
       updateAria();
       if (toggle.checked) {
         openMenu();

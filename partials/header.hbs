@@ -1,5 +1,5 @@
 <header class="site-header">
-  <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true" />
+  <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-hidden="true" tabindex="-1" />
   <div class="wrap header-top">
     <div class="brand">{{#if @site.logo}}<a href="{{@site.url}}" rel="home"><img
             src="{{@site.logo}}"
@@ -10,7 +10,27 @@
       {{navigation}}
     </nav>
     <div class="actions">
-      {{search}}
+      <button
+        class="icon-btn search-btn"
+        type="button"
+        data-ghost-search
+        aria-label="Search"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          aria-hidden="true"
+        >
+          <circle cx="11" cy="11" r="7"></circle>
+          <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+        </svg>
+        <span class="sr-only">Search</span>
+      </button>
       {{> "components/theme-toggle"}}
       {{#if @site.members_enabled}}
         {{#unless @member}}
@@ -25,16 +45,16 @@
           <a class="sub-btn" href="#/portal/account">Account</a>
         {{/unless}}
       {{/if}}
-      <label for="menu-toggle" class="icon-btn menu-btn" aria-label="Open menu">
+      <label for="menu-toggle" class="icon-btn menu-btn" aria-label="Open menu" tabindex="0" role="button" aria-controls="mobile-menu">
         <span aria-hidden="true">☰</span>
         <span class="label">Menu</span>
       </label>
     </div>
   </div>
-  <div class="mobile-menu" aria-label="Mobile menu">
+  <div class="mobile-menu" id="mobile-menu" aria-label="Mobile menu" aria-hidden="true">
     <div class="mobile-menu__header">
       <span>{{@site.title}}</span>
-      <label for="menu-toggle" class="icon-btn close-btn" aria-label="Close menu">✕</label>
+      <label for="menu-toggle" class="icon-btn close-btn" aria-label="Close menu" tabindex="0" role="button" aria-controls="mobile-menu">✕</label>
     </div>
     <nav class="mobile-primary" aria-label="Primary">
       {{navigation}}

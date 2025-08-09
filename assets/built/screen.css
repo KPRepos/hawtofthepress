@@ -7,13 +7,14 @@
   --c-subtle: #666666;
   --c-muted: #333333;
   --c-border: #e6e6e6;
-  --c-link: #0000ee;
-  --c-link-visited: #0044ee;
+  --c-link: #0645ad; /* Accessible blue on white */
+  --c-link-visited: #0b3d91; /* Darker navy for visited (non-purple) */
+  --c-link-hover: #0b5bd3; /* Slightly brighter for hover */
   --c-surface: #ffffff;
   --c-surface-hover: #f6f6f6;
   --c-surface-alt: #fcfcfc;
   --c-invert: #ffffff;
-  --c-icon-sun: #ffcd3c;
+  --c-icon-sun: #fdb515; /* California Gold */
   --c-icon-moon: #6ea8ff;
 }
 html,
@@ -99,7 +100,7 @@ body {
   display: flex;
   gap: 0.75rem;
   align-items: center;
-  overflow: auto;
+  overflow: visible; /* prevent focus outlines on links from being clipped */
   margin-bottom: 0.25rem;
 }
 .site-nav ul {
@@ -158,7 +159,8 @@ body {
   background: transparent;
 }
 .menu-btn:focus-visible {
-  outline: none;
+  outline: 3px solid #00e;
+  outline-offset: 2px;
 }
 /* Hidden checkbox used to toggle the mobile drawer */
 .menu-toggle {
@@ -188,6 +190,9 @@ body {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+  /* Prevent keyboard focus when the drawer is closed */
+  visibility: hidden;
+  pointer-events: none;
 }
 .mobile-menu__header {
   display: flex;
@@ -232,13 +237,15 @@ body {
   height: 34px;
   align-items: center;
   justify-content: center;
-  border: 1px solid #e6e6e6;
+  border: 1px solid var(--c-border);
   border-radius: 6px;
   cursor: pointer;
 }
 /* When toggled, reveal the drawer */
 .menu-toggle:checked ~ .mobile-menu {
   transform: translateX(0);
+  visibility: visible;
+  pointer-events: auto;
 }
 .icon-btn {
   -webkit-appearance: none;
@@ -296,6 +303,46 @@ body {
 .search-btn svg {
   width: 20px;
   height: 20px;
+}
+/* Ensure Ghost's built-in {{search}} button is styled and focus-visible */
+.actions [data-ghost-search] {
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: 1px solid var(--c-border);
+  background: var(--c-surface);
+  color: var(--c-fg);
+  width: 34px;
+  height: 34px;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: background-color 120ms ease, border-color 120ms ease,
+    box-shadow 120ms ease;
+}
+.actions [data-ghost-search]:hover,
+.actions [data-ghost-search]:focus {
+  background: var(--c-surface-hover);
+  border-color: #cfcfcf;
+}
+.actions [data-ghost-search]:focus-visible {
+  outline: none;
+}
+/* Fallback for browsers without :focus-visible */
+.actions [data-ghost-search]:focus {
+  outline: none;
+}
+.actions [data-ghost-search]:focus:not(:focus-visible) {
+  outline: none;
+}
+.actions [data-ghost-search] svg {
+  width: 20px;
+  height: 20px;
+  display: block;
 }
 /* Tag/secondary nav */
 .tag-nav {
@@ -396,6 +443,10 @@ a {
 a:visited {
   color: var(--c-link-visited);
 }
+a:hover,
+a:focus {
+  color: var(--c-link-hover);
+}
 a:focus-visible,
 button:focus-visible,
 input:focus-visible,
@@ -419,7 +470,7 @@ textarea:focus-visible {
   padding: 0.6rem 0;
 }
 .feed li + li {
-  border-top: 1px solid #e6e6e6;
+  border-top: 1px solid var(--c-border);
 }
 @media (hover: hover) {
   .feed li:hover {
@@ -451,6 +502,10 @@ textarea:focus-visible {
 .reading {
   color: var(--c-subtle);
   white-space: nowrap;
+}
+/* Ensure reading time is always in the 4th column so it aligns even without tags */
+.feed .reading {
+  grid-column: 4;
 }
 /* Remove clock icon before reading time */
 .feed .reading::before,
@@ -572,7 +627,7 @@ textarea:focus-visible {
 }
 /* Make featured rows harmonize with feed items */
 .featured-card {
-  background: var(--c-surface);
+  background: transparent; /* inherit parent background */
 }
 /* Mobile refinements for Featured section */
 @media (max-width: 560px) {
@@ -978,18 +1033,19 @@ body.has-serif-body,
 }
 /* Dark theme */
 :root.theme-dark {
-  --c-bg: #0b0b0b;
+  --c-bg: #121212; /* lighter than near-black for comfort */
   --c-fg: #f2f2f2;
-  --c-subtle: #a1a1a1;
-  --c-muted: #c9c9c9;
-  --c-border: #2a2a2a;
-  --c-link: #82aaff;
-  --c-link-visited: #a682ff;
-  --c-surface: #111111;
-  --c-surface-hover: #161616;
-  --c-surface-alt: #0f0f0f;
+  --c-subtle: #b0b0b0;
+  --c-muted: #d0d0d0;
+  --c-border: #2e2e2e;
+  --c-link: #7fb3ff; /* Accessible on dark */
+  --c-link-visited: #ffd166; /* Warm accent */
+  --c-link-hover: #a6c8ff;
+  --c-surface: #181818;
+  --c-surface-hover: #1f1f1f;
+  --c-surface-alt: #151515;
   --c-invert: #0b0b0b;
-  --c-icon-sun: #ffd166;
+  --c-icon-sun: #fdb515;
   --c-icon-moon: #9bbcff;
 }
 /* Theme toggle button visuals */
@@ -1110,6 +1166,7 @@ html[data-theme="dark"] .theme-toggle .moon {
   }
   .feed .reading {
     justify-self: start;
+    grid-column: auto; /* reset for stacked layout */
     font-size: 0.9rem;
     color: #333;
   }
@@ -1130,6 +1187,7 @@ html[data-theme="dark"] .theme-toggle .moon {
   }
   .feed .reading {
     justify-self: start;
+    grid-column: auto; /* reset for stacked layout */
     font-size: 0.9rem;
     color: #666;
   }
