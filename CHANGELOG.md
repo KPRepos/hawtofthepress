@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.2.0](https://github.com/zhawtof/hawtofthepress/compare/v1.1.2...v1.2.0) (2025-08-09)
+
+
+### Features
+
+* **fonts:** implement Ghost custom font support with CSS variables for body and headings ([309562a](https://github.com/zhawtof/hawtofthepress/commit/309562a4cd4ee3c583be4a05a2dcac1f31b706e5))
+
+
+### Bug Fixes
+
+* **author-card:** update RSS link colors for improved visibility and consistency ([d2fae15](https://github.com/zhawtof/hawtofthepress/commit/d2fae156cae96ba2ffb3ae195d8d43a0df4e656f))
+
 ## [1.1.2](https://github.com/zhawtof/hawtofthepress/compare/v1.1.1...v1.1.2) (2025-08-09)
 
 
