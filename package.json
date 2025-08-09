@@ -43,6 +43,7 @@
     "dev:theme": "gulp dev",
     "build": "NODE_ENV=production gulp build",
     "zip": "NODE_ENV=production gulp zip",
+    "prepare": "husky",
     "lint": "gscan .",
     "lint:strict": "gscan --fatal .",
     "postinstall": "echo 'Run pnpm dev to start the build watcher'",
@@ -63,6 +64,9 @@
     "gulp-zip": "^6.1.0",
     "postcss": "^8.5.6",
     "postcss-import": "^16.1.1",
-    "postcss-nested": "^7.0.2"
+    "postcss-nested": "^7.0.2",
+    "@commitlint/cli": "^19.8.1",
+    "@commitlint/config-conventional": "^19.8.1",
+    "husky": "^9.1.7"
   }
 }
