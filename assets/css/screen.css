@@ -853,10 +853,25 @@ textarea:focus-visible {
   width: min(100%, 1200px);
   margin: 2rem auto;
 }
-.kg-width-full {
+.kg-width-full,
+.post-content .kg-width-full {
+  /* Full-bleed cards span the viewport and stay centered */
   width: 100vw;
-  margin-left: 50%;
-  transform: translateX(-50%);
+  max-width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+}
+
+/* Ensure media inside full-bleed figures scales correctly */
+.kg-width-full img,
+.kg-width-full video,
+.kg-width-full iframe,
+.post-content .kg-width-full img,
+.post-content .kg-width-full video,
+.post-content .kg-width-full iframe {
+  width: 100%;
+  height: auto;
+  display: block;
 }
 
 /* Optional: support for custom fonts toggles */
@@ -969,6 +984,25 @@ body.has-serif-body,
      users can still access sign-in via the Portal in Subscribe */
   .actions .signin-link {
     display: none;
+  }
+}
+
+/* Stack post metadata on small screens for better readability */
+@media (max-width: 560px) {
+  .post-meta {
+    display: grid;
+    grid-template-columns: 1fr;
+    align-items: start;
+    gap: 0.1rem;
+  }
+  /* Remove inline separators when stacked */
+  .post-meta .date + .reading::before,
+  .post-meta .reading + .tags::before,
+  .post-meta .tags + .post-author::before,
+  .post-meta .reading + .post-author::before,
+  .post-meta .date + .post-author::before {
+    content: none;
+    margin: 0;
   }
 }
 
