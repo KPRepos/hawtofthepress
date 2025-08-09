@@ -886,6 +886,18 @@ textarea:focus-visible {
 .author-card .rss-inline {
   margin-top: 0.2rem;
 }
+/* Make the author/profile RSS link grey like the footer RSS */
+.author-card .rss-link,
+.author-card .rss-link:link,
+.author-card .rss-link:visited {
+  color: var(--c-subtle);
+  text-decoration-color: #666;
+}
+.author-card .rss-link:hover,
+.author-card .rss-link:focus {
+  color: var(--c-fg);
+  text-decoration-color: var(--c-fg);
+}
 /* Reduce vertical space for social links inside author card */
 .author-card .social {
   margin: 0.1rem 0 0.15rem 0;
