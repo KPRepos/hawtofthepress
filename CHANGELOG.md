@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.0.3](https://github.com/zhawtof/hawtofthepress/compare/v1.0.2...v1.0.3) (2025-08-09)
+
+
+### Bug Fixes
+
+* **tag-nav:** reduce margin-right for hash symbol before links ([d2428ed](https://github.com/zhawtof/hawtofthepress/commit/d2428edf401fdf4789c779e7fc2e3d5f1600e393))
+
 ## [1.0.2](https://github.com/zhawtof/hawtofthepress/compare/v1.0.1...v1.0.2) (2025-08-09)
 
 
