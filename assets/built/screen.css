@@ -997,6 +997,7 @@ body.has-serif-body,
   width: 34px;
   height: 34px;
   padding: 0;
+  border: 0;
 }
 .theme-toggle .sun {
   color: var(--c-icon-sun);
