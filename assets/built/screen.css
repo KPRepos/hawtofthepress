@@ -661,6 +661,7 @@ textarea:focus-visible {
 .post-nav .next {
   flex: 1 1 50%;
   max-width: calc(var(--maxw) / 2 - 1rem); /* keep text from crossing center */
+  min-width: 0; /* allow shrinking so long titles ellipsize */
 }
 .post-nav .next {
   text-align: right;
@@ -949,6 +950,20 @@ body.has-serif-body,
      users can still access sign-in via the Portal in Subscribe */
   .actions .signin-link {
     display: none;
+  }
+}
+/* Stack and center post navigation on small screens */
+@media (max-width: 560px) {
+  .post-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 0.35rem;
+    text-align: center;
+  }
+  .post-nav .prev,
+  .post-nav .next {
+    max-width: 100%;
+    text-align: center;
   }
 }
 /* Stack post metadata on small screens for better readability */
