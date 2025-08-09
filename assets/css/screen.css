@@ -882,6 +882,12 @@ textarea:focus-visible {
 
 /* (Removed custom modal styles; using Ghost Portal for signup/signin) */
 
+/* Ghost cards: default vertical spacing (callouts, audio, embeds, etc.) */
+.post-content .kg-card,
+.post-content .kg-callout-card {
+  margin: 1.25rem 0; /* align with blockquote/figure spacing */
+}
+
 /* Ghost cards: required widths */
 .kg-width-wide {
   width: min(100%, 1200px);
