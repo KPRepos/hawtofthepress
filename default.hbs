@@ -3,6 +3,26 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script>
+    (function () {
+      try {
+        var stored = localStorage.getItem('theme');
+        var systemDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        var theme = stored || (systemDark ? 'dark' : 'light');
+        var root = document.documentElement;
+        var metaTheme = document.querySelector('meta[name="theme-color"]');
+        if (theme === 'dark') {
+          root.classList.add('theme-dark');
+          root.setAttribute('data-theme', 'dark');
+          if (metaTheme) metaTheme.setAttribute('content', '#0b0b0b');
+        } else {
+          root.classList.remove('theme-dark');
+          root.setAttribute('data-theme', 'light');
+          if (metaTheme) metaTheme.setAttribute('content', '#ffffff');
+        }
+      } catch (e) {}
+    })();
+  </script>
   <title>{{meta_title}}</title>
   <link rel="stylesheet" href="{{asset "assets/css/screen.css"}}" />
   <link rel="alternate" type="application/rss+xml" title="{{@site.title}}" href="{{@site.url}}/rss/" />
@@ -13,6 +33,7 @@
   <link rel="mask-icon" href="{{asset "assets/icons/safari-pinned-tab.svg"}}" color="#000000" />
   <link rel="apple-touch-icon" sizes="180x180" href="{{asset "assets/icons/apple-touch-icon.png"}}" />
   <meta name="theme-color" content="#ffffff" />
+  <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">
@@ -20,6 +41,7 @@
   {{> "header"}}
   <main id="content" tabindex="-1">{{{body}}}</main>
   {{> "footer"}}
+  <script src="{{asset "assets/js/theme-toggle.js"}}"></script>
   {{ghost_foot}}
 </body>
 </html>

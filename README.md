@@ -9,6 +9,7 @@ Monospace brutalist Ghost theme with first‑class Ghost Portal and built‑in s
 - **Header & navigation**: sticky header with brand and primary navigation; responsive mobile drawer
 - **Secondary nav (tags/categories)**: optional bar under header using Ghost’s Secondary Navigation
 - **Search**: integrates Ghost’s built‑in `{{search}}` helper in the header
+- **Dark mode**: system‑aware dark theme with a header toggle; preference is persisted
 - **Feed**: vertical DATE — Title layout with reading time, tags, featured badge, zebra striping
 - **Featured posts**: compact featured section on the homepage
 - **Accessibility**: skip‑to‑content link, focus styles, semantic landmarks
@@ -25,6 +26,7 @@ Monospace brutalist Ghost theme with first‑class Ghost Portal and built‑in s
 
 - `default.hbs`: base template; includes `partials/header.hbs`, `partials/footer.hbs`; injects RSS link and icons
 - `partials/header.hbs`: brand, `{{navigation}}` (primary), `{{search}}`, Portal links, mobile drawer, and `partials/components/tag-nav.hbs` (secondary nav)
+- `partials/components/theme-toggle.hbs`: reusable dark‑mode toggle button component
 - `partials/footer.hbs`: copyright, "Built with" line, and RSS link (`partials/components/rss-link.hbs`)
 - `index.hbs`: homepage with Featured section and feed list + pagination
 - `post.hbs`: post template with feature image, content, subscribe CTA, and prev/next nav
@@ -32,6 +34,20 @@ Monospace brutalist Ghost theme with first‑class Ghost Portal and built‑in s
 - `tag.hbs`, `author.hbs`: archive templates with compact headers
 - `assets/css/screen.css`: authored theme styles (source)
 - `assets/built/screen.css`: compiled/minified output from the build (not linked by default)
+- `assets/js/theme-toggle.js`: client script that applies and persists the theme
+
+## Dark mode
+
+- The theme is system‑aware and applies dark mode by default when the OS prefers it. A header toggle lets visitors switch modes, and the choice is saved to `localStorage`.
+- The toggle component lives at `partials/components/theme-toggle.hbs`. To render it elsewhere, include:
+
+  ```hbs
+  {{> "components/theme-toggle"}}
+  ```
+
+- An inline script in `default.hbs` sets the theme class early to avoid flash of incorrect theme and updates the `<meta name="theme-color">` for mobile address bars.
+- Colors are driven by CSS variables. Key tokens include: `--c-bg`, `--c-fg`, `--c-border`, `--c-subtle`, `--c-muted`, `--c-link`, `--c-link-visited`, `--c-surface`, `--c-surface-hover`, `--c-surface-alt`, and icon colors `--c-icon-sun`, `--c-icon-moon`. Override these in your own CSS if you want a different palette.
+- The icon glyphs can be changed by editing `partials/components/theme-toggle.hbs`; colors will follow the tokens above.
 
 ## Development
 
