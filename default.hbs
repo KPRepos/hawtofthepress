@@ -14,17 +14,32 @@
         if (theme === 'dark') {
           root.classList.add('theme-dark');
           root.setAttribute('data-theme', 'dark');
-          if (metaTheme) metaTheme.setAttribute('content', '#14171A');
+          if (metaTheme) metaTheme.setAttribute('content', '{{@custom.background_color_dark}}');
         } else {
           root.classList.remove('theme-dark');
           root.setAttribute('data-theme', 'light');
-          if (metaTheme) metaTheme.setAttribute('content', '#ffffff');
+          if (metaTheme) metaTheme.setAttribute('content', '{{@custom.background_color_light}}');
         }
       } catch (e) {}
     })();
   </script>
   <title>{{meta_title}}</title>
   <link rel="stylesheet" href="{{asset "assets/css/screen.css"}}" />
+  <style>
+    :root {
+      --maxw: {{#match @custom.content_width "Narrow"}}720px{{else}}{{#match @custom.content_width "Wide"}}960px{{else}}820px{{/match}}{{/match}};
+      --base-font-size: {{#match @custom.font_size "Small"}}14px{{else}}{{#match @custom.font_size "Large"}}18px{{else}}{{#match @custom.font_size "Extra Large"}}20px{{else}}16px{{/match}}{{/match}}{{/match}};
+      --code-font-size: {{#match @custom.code_block_font_size "Match base"}}var(--base-font-size){{else}}{{#match @custom.code_block_font_size "Smaller (n-2)"}}calc(var(--base-font-size) - 2px){{else}}{{#match @custom.code_block_font_size "Smaller (n-3)"}}calc(var(--base-font-size) - 3px){{else}}calc(var(--base-font-size) - 1px){{/match}}{{/match}}{{/match}};
+      --c-bg: {{@custom.background_color_light}};
+      --c-fg: {{@custom.text_color_light}};
+      --c-link: {{@custom.primary_color_light}};
+    }
+    :root.theme-dark {
+      --c-bg: {{@custom.background_color_dark}};
+      --c-fg: {{@custom.text_color_dark}};
+      --c-link: {{@custom.primary_color_dark}};
+    }
+  </style>
   <link rel="alternate" type="application/rss+xml" title="{{@site.title}}" href="{{@site.url}}/rss/" />
   {{#is "paged"}}
     <meta name="robots" content="noindex" />
@@ -34,6 +49,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{asset "assets/icons/apple-touch-icon.png"}}" />
   <meta name="theme-color" content="#ffffff" />
   <script src="https://cdn.jsdelivr.net/npm/iconify-icon@2.1.0/dist/iconify-icon.min.js" defer></script>
+  <!-- Prism.js for syntax highlighting -->
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-core.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/plugins/autoloader/prism-autoloader.min.js"></script>
   {{ghost_head}}
 </head>
 <body class="{{body_class}}">

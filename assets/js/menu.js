@@ -9,6 +9,62 @@
   }
 
   onReady(function () {
+    // Build hierarchical nav from flat items using markers like
+    // "Label [has_child]" and "Label [subitem]" authored in Ghost Admin.
+    // This enhances both the desktop and mobile nav instances.
+    function enhanceHierarchicalNavigation(root) {
+      if (!root) return;
+      // Only process once
+      if (root.__navEnhanced) return;
+      root.__navEnhanced = true;
+
+      var list = root.querySelector('ul.nav-menu');
+      if (!list) return;
+
+      var items = Array.prototype.slice.call(list.children);
+      var parentLi = null;
+
+      items.forEach(function (li) {
+        var link = li.querySelector('a');
+        if (!link) return;
+        var raw = (link.textContent || '').trim();
+        var hasChild = /\[has_child\]$/i.test(raw);
+        var isSubItem = /\[subitem\]$/i.test(raw);
+        var cleanLabel = raw.replace(/\s*\[(?:has_child|subitem)\]\s*$/i, '').trim();
+        if (cleanLabel && cleanLabel !== raw) {
+          link.textContent = cleanLabel;
+        }
+
+        if (hasChild) {
+          // Turn current LI into parent with submenu container
+          li.classList.add('has-children');
+          var submenu = document.createElement('ul');
+          submenu.className = 'submenu';
+          li.appendChild(submenu);
+          parentLi = li;
+          return;
+        }
+
+        if (isSubItem && parentLi) {
+          // Move this LI under the last parent as a submenu item
+          var submenuContainer = parentLi.querySelector('ul.submenu');
+          if (!submenuContainer) {
+            submenuContainer = document.createElement('ul');
+            submenuContainer.className = 'submenu';
+            parentLi.appendChild(submenuContainer);
+          }
+          li.classList.add('submenu-item');
+          var a = li.querySelector('a');
+          if (a) a.classList.add('submenu-link');
+          submenuContainer.appendChild(li);
+          return;
+        }
+
+        // If regular item appears, reset parent chain
+        parentLi = null;
+      });
+    }
+
     var toggle = document.getElementById("menu-toggle");
     if (!toggle) return;
 
@@ -221,7 +277,13 @@
       }
     });
 
-    // Initialize ARIA state on load
+    // Initialize ARIA state on load and enhance nav menus
     updateAria();
+
+    // Enhance both desktop and mobile navs
+    var desktopNav = document.querySelector('nav.site-nav.custom-navigation');
+    var mobileNav = document.querySelector('nav.mobile-primary.custom-navigation');
+    enhanceHierarchicalNavigation(desktopNav);
+    enhanceHierarchicalNavigation(mobileNav);
   });
 })();
