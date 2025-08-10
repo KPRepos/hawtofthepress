@@ -7,12 +7,18 @@
     if (theme === "dark") {
       root.classList.add("theme-dark");
       root.setAttribute("data-theme", "dark");
-      if (metaTheme) metaTheme.setAttribute("content", "#14171A");
+      if (metaTheme) {
+        var bgDark = getComputedStyle(root).getPropertyValue('--c-bg').trim() || '#14171A';
+        metaTheme.setAttribute("content", bgDark);
+      }
       if (toggle) toggle.setAttribute("aria-pressed", "true");
     } else {
       root.classList.remove("theme-dark");
       root.setAttribute("data-theme", "light");
-      if (metaTheme) metaTheme.setAttribute("content", "#ffffff");
+      if (metaTheme) {
+        var bgLight = getComputedStyle(root).getPropertyValue('--c-bg').trim() || '#ffffff';
+        metaTheme.setAttribute("content", bgLight);
+      }
       if (toggle) toggle.setAttribute("aria-pressed", "false");
     }
   }

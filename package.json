@@ -20,7 +20,66 @@
   },
   "license": "MIT",
   "config": {
-    "posts_per_page": 20
+    "posts_per_page": 20,
+    "custom": {
+      "font_size": {
+        "label": "Base font size",
+        "type": "select",
+        "options": ["Small", "Medium", "Large", "Extra Large"],
+        "default": "Medium",
+        "description": "Controls the base font size used across the site"
+      },
+      "content_width": {
+        "label": "Content width",
+        "type": "select",
+        "options": ["Narrow", "Default", "Wide"],
+        "default": "Default",
+        "description": "Max width of content wrapper"
+      },
+      "primary_color_light": {
+        "label": "Primary color (light)",
+        "type": "color",
+        "default": "#0645ad",
+        "description": "Primary/link color for light theme"
+      },
+      "primary_color_dark": {
+        "label": "Primary color (dark)",
+        "type": "color",
+        "default": "#ffd166",
+        "description": "Primary/link color for dark theme"
+      },
+      "background_color_light": {
+        "label": "Background (light)",
+        "type": "color",
+        "default": "#ffffff",
+        "description": "Background color for light theme"
+      },
+      "text_color_light": {
+        "label": "Text (light)",
+        "type": "color",
+        "default": "#000000",
+        "description": "Text color for light theme"
+      },
+      "background_color_dark": {
+        "label": "Background (dark)",
+        "type": "color",
+        "default": "#14171a",
+        "description": "Background color for dark theme"
+      },
+      "text_color_dark": {
+        "label": "Text (dark)",
+        "type": "color",
+        "default": "#dde1e5",
+        "description": "Text color for dark theme"
+      },
+      "code_block_font_size": {
+        "label": "Code block font size",
+        "type": "select",
+        "options": ["Match base", "Smaller (n-1)", "Smaller (n-2)", "Smaller (n-3)"],
+        "default": "Smaller (n-1)",
+        "description": "Font size for fenced code blocks (<pre><code>) relative to the base size"
+      }
+    }
   },
   "keywords": [
     "ghost",
